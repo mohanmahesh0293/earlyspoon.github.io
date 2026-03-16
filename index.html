@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Early Spoon – Fresh Homemade Meals</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥄</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet" />
@@ -396,19 +397,30 @@
     .carousel-track {
       display: flex;
       transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
+      will-change: transform;
     }
 
     .carousel-slide {
       min-width: 100%;
+      width: 100%;
       height: 480px;
       position: relative;
       flex-shrink: 0;
+      overflow: hidden;
     }
 
     .carousel-slide img {
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      object-position: center;
       display: block;
+    }
+
+    @media (max-width: 768px) {
+      .carousel-slide {
+        height: 260px;
+      }
     }
 
     .carousel-slide::after {
@@ -517,52 +529,6 @@
     .wa-icon { font-size: 1.3rem; }
 
     /* ── OFFERS ── */
-    #offers {
-      background: var(--brown);
-      padding: 80px 5%;
-    }
-
-    #offers .section-label { color: var(--gold); }
-    #offers .section-title { color: var(--white); }
-
-    .offers-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      max-width: 900px;
-      margin: 50px auto 0;
-    }
-
-    .offer-card {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 18px;
-      padding: 36px 28px;
-      text-align: center;
-      transition: background 0.2s, transform 0.2s;
-    }
-
-    .offer-card:hover {
-      background: rgba(255,255,255,0.13);
-      transform: translateY(-4px);
-    }
-
-    .offer-icon { font-size: 2.4rem; margin-bottom: 16px; }
-
-    .offer-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 10px;
-    }
-
-    .offer-desc {
-      font-size: 0.88rem;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.65);
-    }
-
     /* ── CATERING ── */
     #catering {
       background: var(--white);
@@ -626,15 +592,160 @@
       margin-top: 14px;
     }
 
-    /* ── TESTIMONIALS ── */
+    /* ── TESTIMONIALS CAROUSEL ── */
     #testimonials {
-      background: var(--cream);
-      text-align: center;
+      background: var(--white);
+      padding: 90px 5%;
     }
 
-    .t-center { max-width: 680px; margin: 0 auto 50px; }
+    .t-center { max-width: 680px; margin: 0 auto 52px; text-align: center; }
     .t-center .divider { margin: 18px auto 0; }
 
+    .reviews-carousel-wrap {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .reviews-track {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
+      will-change: transform;
+    }
+
+    .review-card {
+      background: var(--cream);
+      border: 1.5px solid rgba(212,137,42,0.15);
+      border-radius: 20px;
+      padding: 32px 28px;
+      /* Width set by JS — do not set min-width here */
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 4px 24px rgba(123,45,0,0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .review-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(123,45,0,0.13);
+    }
+
+    .review-card-stars { color: var(--gold); font-size: 1rem; letter-spacing: 2px; flex-shrink: 0; }
+
+    .review-card-text {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--text);
+      font-style: italic;
+      /* Ellipsis: clamp to 4 lines */
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex-shrink: 0;
+    }
+
+    .review-card-text::before { content: '\201C'; font-size: 1.4rem; color: var(--gold); line-height: 0; vertical-align: -0.4em; margin-right: 2px; }
+    .review-card-text::after  { content: '\201D'; font-size: 1.4rem; color: var(--gold); line-height: 0; vertical-align: -0.4em; margin-left: 2px; }
+
+    .review-card-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-top: 1px solid rgba(212,137,42,0.15);
+      padding-top: 16px;
+    }
+
+    .review-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--rust);
+      color: var(--white);
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .review-name {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--dark);
+    }
+
+    .review-date {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .review-google-icon {
+      margin-left: auto;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .reviews-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .reviews-nav-btn {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 2px solid rgba(123,45,0,0.15);
+      background: var(--white);
+      color: var(--brown);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    }
+
+    .reviews-nav-btn:hover {
+      background: var(--rust);
+      border-color: var(--rust);
+      color: var(--white);
+      transform: scale(1.08);
+    }
+
+    .reviews-nav-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .reviews-nav-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: rgba(123,45,0,0.18);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .reviews-nav-dot.active {
+      background: var(--rust);
+      transform: scale(1.4);
+    }
+
+    /* Google Review CTA */
     .google-row {
       display: flex;
       align-items: center;
@@ -667,6 +778,10 @@
     }
 
     .review-cta .stars { font-size: 1.5rem; }
+
+    .review-card { cursor: pointer; }
+
+    #reviewModal.open { display: flex !important; }
 
     /* ── DAILY ── */
     #daily {
@@ -876,8 +991,8 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
       <li><a href="#menu">Menu</a></li>
-      <li><a href="#offers">What We Offer</a></li>
       <li><a href="#catering">Catering</a></li>
+	  <li><a href="https://maps.app.goo.gl/aUL9PqspCFWVWqQT7" target="_blank">Locate Us</a></li>	  
       <li><a href="https://wa.me/c/447440035369" target="_blank" class="nav-cta">Order Now</a></li>
     </ul>
     <div class="hamburger" id="hamburger" onclick="toggleNav()">
@@ -946,7 +1061,7 @@
           then this image will show automatically.
         -->
         <img
-          src="food-photo-1.jpeg"
+          src="about-photo.jpeg"
           alt="Early Spoon homemade food"
           onerror="this.src='https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=800&q=80'"
         />
@@ -1015,12 +1130,7 @@
         <button class="carousel-btn prev" onclick="moveCarousel(-1)" aria-label="Previous">&#8592;</button>
         <button class="carousel-btn next" onclick="moveCarousel(1)" aria-label="Next">&#8594;</button>
       </div>
-      <div class="carousel-dots" id="carouselDots">
-        <button class="carousel-dot active" onclick="goToSlide(0)"></button>
-        <button class="carousel-dot" onclick="goToSlide(1)"></button>
-        <button class="carousel-dot" onclick="goToSlide(2)"></button>
-        <button class="carousel-dot" onclick="goToSlide(3)"></button>
-      </div>
+      <div class="carousel-dots" id="carouselDots"></div>
     </div>
   </section>
   <section id="menu">
@@ -1045,31 +1155,6 @@
       <a href="https://wa.me/c/447440035369" target="_blank" class="btn-wa">
         <span>📋</span> View Today's Menu
       </a>
-    </div>
-  </section>
-
-  <!-- WHAT WE OFFER -->
-  <section id="offers">
-    <div style="text-align:center;max-width:600px;margin:0 auto;" class="fade-in">
-      <span class="section-label">What We Offer</span>
-      <h2 class="section-title" style="color:var(--white);">Three Times a Day,<br/>Every Day</h2>
-    </div>
-    <div class="offers-grid">
-      <div class="offer-card fade-in">
-        <div class="offer-icon">🌅</div>
-        <div class="offer-title">Breakfast</div>
-        <div class="offer-desc">Homemade Morning Delights — warm, nourishing, and made fresh to start your day right.</div>
-      </div>
-      <div class="offer-card fade-in">
-        <div class="offer-icon">🥘</div>
-        <div class="offer-title">Lunch</div>
-        <div class="offer-desc">Hearty Home-Cooked Meals — wholesome and filling, prepared with care and quality ingredients.</div>
-      </div>
-      <div class="offer-card fade-in">
-        <div class="offer-icon">🌙</div>
-        <div class="offer-title">Evening Snacks</div>
-        <div class="offer-desc">Tasty &amp; Fresh Bites — perfect little treats to wind down the evening.</div>
-      </div>
     </div>
   </section>
 
@@ -1099,7 +1184,7 @@
         loop
         playsinline
         controls
-        style="width:100%;display:block;max-height:600px;object-fit:cover;background:#1a0800;"
+        style="width:100%;display:block;max-height:520px;object-fit:cover;background:#1a0800;"
       ></video>
     </div>
     <div class="fade-in" style="margin-top:40px;">
@@ -1143,24 +1228,196 @@
   <!-- TESTIMONIALS -->
   <section id="testimonials">
     <div class="t-center fade-in">
-      <span class="section-label">Reviews</span>
+      <span class="section-label">Customer Reviews</span>
       <h2 class="section-title">What Our Customers Say</h2>
       <div class="divider"></div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;">
+        <span style="color:var(--gold);font-size:1.1rem;">★★★★★</span>
+        <span style="font-size:0.88rem;color:var(--muted);">5.0 · 9 reviews on <strong>Google</strong></span>
+      </div>
     </div>
-    <div class="google-row fade-in">
-      <span class="google-logo">
-        <span class="g-G">G</span><span class="g-o1">o</span><span class="g-o2">o</span><span class="g-g">g</span><span class="g-l">l</span><span class="g-e">e</span>
-      </span>
-      <span style="font-size:0.88rem;color:var(--muted);">Love our food? Leave us a <strong>review on Google!</strong></span>
+
+    <div class="reviews-carousel-wrap fade-in">
+      <div class="reviews-track" id="reviewsTrack">
+
+        <!-- Review 1 -->
+        <div class="review-card" onclick="openReview('Surendra Nivas','February 2026','S','I recently ordered from Early Spoon and absolutely loved the food! Everything was fresh, flavorful, and perfectly prepared. You can really taste the quality and care in every dish. Highly recommend supporting this small business.')">
+          <div class="review-card-author">
+            <div class="review-avatar">S</div>
+            <div>
+              <div class="review-name">Surendra Nivas</div>
+              <div class="review-date">February 2026</div>
+            </div>
+          </div>
+          <div class="review-card-stars">★★★★★</div>
+          <p class="review-card-text">I recently ordered from Early Spoon and absolutely loved the food! Everything was fresh, flavorful, and perfectly prepared. You can really taste the quality and care in every dish. Highly recommend supporting this small business.</p>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card" onclick="openReview('Roopa Pilli','March 2026','R','Highly recommend trying food from Early Spoon, worth every bite! Home cooked food and is absolutely delicious 😋. We\'ve tried different items from their breakfast, lunch, and snacks menu, and every single time it\'s been spot on. The quality is consistently great, and the prices are reasonable too. They also offer some healthy food options, which are definitely worth giving a try. Will definitely be ordering again! 😊')">
+          <div class="review-card-author">
+            <div class="review-avatar">R</div>
+            <div>
+              <div class="review-name">Roopa Pilli</div>
+              <div class="review-date">March 2026</div>
+            </div>
+          </div>
+          <div class="review-card-stars">★★★★★</div>
+          <p class="review-card-text">Highly recommend trying food from Early Spoon, worth every bite! Home cooked food and is absolutely delicious. We've tried different items from their breakfast, lunch, and snacks menu, and every single time it's been spot on. They also offer healthy food options too!</p>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card" onclick="openReview('Keerthana Yadav','February 2026','K','I\'ve ordered breakfast, lunch, and snacks from Early Spoon at different times, and honestly, the food has been great every single time — fresh and super tasty. For breakfast, I tried Gunta Punugulu and Idli sambar, and both had that proper desi taste that takes you straight back to India 🇮🇳❤️. For lunch, I ordered the chicken pulao — simple, classic, and really good 👌. And the egg puff for a snack was perfect for a cold UK evening — warm and comforting. Definitely excited to try more dishes from Early Spoon, especially their combo deals and the healthy power drinks 💥🥤')">
+          <div class="review-card-author">
+            <div class="review-avatar">K</div>
+            <div>
+              <div class="review-name">Keerthana Yadav</div>
+              <div class="review-date">February 2026</div>
+            </div>
+          </div>
+          <div class="review-card-stars">★★★★★</div>
+          <p class="review-card-text">I've ordered breakfast, lunch, and snacks from Early Spoon at different times, and honestly, the food has been great every single time. For breakfast I tried Gunta Punugulu and Idli sambar — that proper desi taste that takes you straight back to India ❤️</p>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="review-card" onclick="openReview('Nihal Ishaan','February 2026','N','We ordered the chicken burrito bowl for my children and it was absolutely fantastic. The taste was so good that it genuinely felt like we were dining in a restaurant. The pricing is very reasonable too, which makes it even better. We\'re definitely looking forward to ordering the daily lunch boxes for the kids to take to school. The packing and presentation were excellent, very neat and appealing. Highly recommended! 👌👌👌')">
+          <div class="review-card-author">
+            <div class="review-avatar">N</div>
+            <div>
+              <div class="review-name">Nihal Ishaan</div>
+              <div class="review-date">February 2026</div>
+            </div>
+          </div>
+          <div class="review-card-stars">★★★★★</div>
+          <p class="review-card-text">We ordered the chicken burrito bowl for my children and it was absolutely fantastic. The taste was so good that it genuinely felt like we were dining in a restaurant. The pricing is very reasonable too. Packing and presentation were excellent — highly recommended! 👌</p>
+        </div>
+
+        <!-- Review 5 -->
+        <div class="review-card" onclick="openReview('Mahesh Mohan','March 2026','M','Early Spoon has found a way to my heart through my taste buds. The blend of traditional and modern healthy recipes in their menu makes them unique. I am a huge fan of their millet idly and chicken burrito bowl.')">
+          <div class="review-card-author">
+            <div class="review-avatar">M</div>
+            <div>
+              <div class="review-name">Mahesh Mohan</div>
+              <div class="review-date">March 2026</div>
+            </div>
+          </div>
+          <div class="review-card-stars">★★★★★</div>
+          <p class="review-card-text">Early Spoon has found a way to my heart through my taste buds. The blend of traditional and modern healthy recipes in their menu makes them unique. I am a huge fan of their millet idly and chicken burrito bowl.</p>
+        </div>
+
+        <!-- Review 6 -->
+        <div class="review-card" onclick="openReview('Sowmya Kothlapuram','March 2026','S','Hands down one of the best burrito bowls I\'ve ever had 🤩. I\'ve previously ordered punugulu, idly, and chicken pulao from Early Spoon, and every single dish has been just as delicious. The portion sizes are generous, and the presentation is always spot on. If you\'re in the Ebbsfleet area, I highly recommend giving Early Spoon a try — you definitely won\'t be disappointed 🙌. Early Spoon has been a savior during busy working days.')">
+          <div class="review-card-author">
+            <div class="review-avatar">S</div>
+            <div>
+              <div class="review-name">Sowmya Kothlapuram</div>
+              <div class="review-date">March 2026</div>
+            </div>
+          </div>
+          <div class="review-card-stars">★★★★★</div>
+          <p class="review-card-text">Hands down one of the best burrito bowls I've ever had 🤩 I've previously ordered punugulu, idly, and chicken pulao, and every dish has been delicious. Early Spoon has been a savior during busy working days.</p>
+        </div>
+
+        <!-- Review 7 -->
+        <div class="review-card" onclick="openReview('Mahesh','February 2026','M','I\'ve ordered from Early Spoon multiple times, and every single time the food has been absolutely next level! The flavors are spot on, the quality is consistent, and I\'ve genuinely enjoyed every bite.')">
+          <div class="review-card-author">
+            <div class="review-avatar">M</div>
+            <div>
+              <div class="review-name">Mahesh</div>
+              <div class="review-date">February 2026</div>
+            </div>
+          </div>
+          <div class="review-card-stars">★★★★★</div>
+          <p class="review-card-text">I've ordered from Early Spoon multiple times, and every single time the food has been absolutely next level! The flavors are spot on, the quality is consistent, and I've genuinely enjoyed every bite.</p>
+        </div>
+
+        <!-- Review 8 -->
+        <div class="review-card" onclick="openReview('Madhavi Venkat','March 2026','M','Ordered ABC juice and Idly. The idly tasted yummy, especially with the chutney. The juice was fresh and refreshing too. Highly recommended! 😊')">
+          <div class="review-card-author">
+            <div class="review-avatar">M</div>
+            <div>
+              <div class="review-name">Madhavi Venkat</div>
+              <div class="review-date">March 2026</div>
+            </div>
+          </div>
+          <div class="review-card-stars">★★★★★</div>
+          <p class="review-card-text">Ordered ABC juice and Idly. The idly tasted yummy, especially with the chutney. The juice was fresh and refreshing too. Highly recommended! 😊</p>
+        </div>
+
+        <!-- Review 9 -->
+        <div class="review-card" onclick="openReview('Rama Krishna','March 2026','R','Fantastic food with the homely touch is the best you can get and we got this with Early Spoon. Would definitely recommend for the taste, value and homely touch.')">
+          <div class="review-card-author">
+            <div class="review-avatar">R</div>
+            <div>
+              <div class="review-name">Rama Krishna</div>
+              <div class="review-date">March 2026</div>
+            </div>
+          </div>
+          <div class="review-card-stars">★★★★★</div>
+          <p class="review-card-text">Fantastic food with the homely touch is the best you can get and we got this with Early Spoon. Would definitely recommend for the taste, value and homely touch.</p>
+        </div>
+
+      </div>
     </div>
-    <div class="review-cta fade-in">
+
+    <div class="reviews-nav fade-in">
+      <button class="reviews-nav-btn" onclick="moveReviews(-1)">&#8592;</button>
+      <div class="reviews-nav-dots" id="reviewsDots"></div>
+      <button class="reviews-nav-btn" onclick="moveReviews(1)">&#8594;</button>
+    </div>
+
+    <!-- Google Review CTA -->
+    <div class="review-cta fade-in" style="margin-top:60px;padding-top:48px;border-top:1px solid rgba(212,137,42,0.15);">
+      <div class="google-row" style="margin-bottom:16px;">
+        <span class="google-logo">
+          <span class="g-G">G</span><span class="g-o1">o</span><span class="g-o2">o</span><span class="g-g">g</span><span class="g-l">l</span><span class="g-e">e</span>
+        </span>
+        <span style="font-size:0.88rem;color:var(--muted);">Love our food? Leave us a <strong>review on Google!</strong></span>
+      </div>
       <div class="stars">★★★★★</div>
       <p style="font-size:0.9rem;color:var(--muted);max-width:400px;line-height:1.6;">
         Share your experience and help others discover the taste of homemade food made with love.
       </p>
-      <a href="https://g.page/r/CRybIae0CckKEBE/review" class="btn-primary" style="margin-top:8px;">⭐ Leave a Google Review</a>
+      <a href="#" class="btn-primary" style="margin-top:8px;">⭐ Leave a Google Review</a>
     </div>
   </section>
+
+  <!-- REVIEW MODAL -->
+  <div id="reviewModal" style="
+    display:none; position:fixed; inset:0; z-index:999;
+    background:rgba(44,16,0,0.65); backdrop-filter:blur(6px);
+    align-items:center; justify-content:center; padding:20px;
+  " onclick="closeReview(event)">
+    <div style="
+      background:var(--white); border-radius:24px; padding:40px 36px;
+      max-width:560px; width:100%; box-shadow:0 32px 80px rgba(0,0,0,0.3);
+      position:relative; max-height:85vh; overflow-y:auto;
+    ">
+      <button onclick="closeReview()" style="
+        position:absolute; top:16px; right:20px;
+        background:none; border:none; font-size:1.4rem;
+        color:var(--muted); cursor:pointer; line-height:1;
+      ">✕</button>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+        <div id="modalAvatar" style="
+          width:48px; height:48px; border-radius:50%;
+          background:var(--rust); color:var(--white);
+          font-family:'Playfair Display',serif; font-size:1.2rem;
+          font-weight:700; display:flex; align-items:center; justify-content:center;
+          flex-shrink:0;
+        "></div>
+        <div>
+          <div id="modalName" style="font-weight:700;font-size:1rem;color:var(--dark);"></div>
+          <div id="modalDate" style="font-size:0.8rem;color:var(--muted);margin-top:2px;"></div>
+        </div>
+      </div>
+      <div style="color:var(--gold);font-size:1.1rem;letter-spacing:2px;margin-bottom:16px;">★★★★★</div>
+      <p id="modalText" style="
+        font-size:0.95rem; line-height:1.8; color:var(--text);
+        font-style:italic; white-space:pre-wrap;
+      "></p>
+    </div>
+  </div>
 
   <!-- CTA STRIP -->
   <section id="daily">
@@ -1195,7 +1452,6 @@
         <ul>
           <li><a href="#about">About</a></li>
           <li><a href="#menu">Today's Menu</a></li>
-          <li><a href="#offers">What We Offer</a></li>
           <li><a href="#catering">Catering</a></li>
         </ul>
       </div>
@@ -1205,6 +1461,7 @@
           <li><a href="https://wa.me/c/447440035369" target="_blank">WhatsApp Catalogue</a></li>
           <li><a href="https://wa.me/447440035369" target="_blank">Message Us</a></li>
           <li><a href="#testimonials">Google Reviews</a></li>
+		  <li><a href="https://maps.app.goo.gl/aUL9PqspCFWVWqQT7" target="_blank">Locate Us</a></li>
         </ul>
       </div>
     </div>
@@ -1245,22 +1502,92 @@
     }, { threshold: 0.4 });
     videoObserver.observe(video);
 
-    // Carousel
+    // ── Image Carousel — infinite circular loop ──
+    const carouselTrack = document.getElementById('carouselTrack');
+    const carouselOuter = document.getElementById('carousel');
+    const carouselDots  = document.getElementById('carouselDots');
     let currentSlide = 0;
-    const totalSlides = 4;
+    let isSliding = false;
     let autoplayTimer;
 
-    function goToSlide(n) {
-      currentSlide = n;
-      document.getElementById('carouselTrack').style.transform = `translateX(-${currentSlide * 100}%)`;
-      document.querySelectorAll('.carousel-dot').forEach((d, i) => {
+    function getOrigSlides() {
+      return Array.from(carouselTrack.querySelectorAll('.carousel-slide:not([data-clone])'));
+    }
+
+    function getAllSlides() {
+      return Array.from(carouselTrack.querySelectorAll('.carousel-slide'));
+    }
+
+    function buildImageInfiniteTrack() {
+      carouselTrack.querySelectorAll('[data-clone]').forEach(s => s.remove());
+      const orig = getOrigSlides();
+      // Prepend clone of last slide, append clone of first slide
+      const pre = orig[orig.length - 1].cloneNode(true); pre.dataset.clone = '1';
+      const app = orig[0].cloneNode(true);               app.dataset.clone = '1';
+      carouselTrack.prepend(pre);
+      carouselTrack.appendChild(app);
+    }
+
+    function buildCarouselDots() {
+      carouselDots.innerHTML = '';
+      getOrigSlides().forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => jumpToSlide(i));
+        carouselDots.appendChild(dot);
+      });
+    }
+
+    function updateCarouselDots() {
+      carouselDots.querySelectorAll('.carousel-dot').forEach((d, i) => {
         d.classList.toggle('active', i === currentSlide);
       });
     }
 
+    function getSlideOffset(index) {
+      // index 0 = first real slide (position 1 in track due to prepended clone)
+      const slideWidth = carouselOuter.offsetWidth;
+      return (index + 1) * slideWidth;
+    }
+
+    function jumpToSlide(index) {
+      currentSlide = index;
+      carouselTrack.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
+      carouselTrack.style.transform  = `translateX(-${getSlideOffset(index)}px)`;
+      updateCarouselDots();
+      resetAutoplay();
+    }
+
+    function goToSlide(index) {
+      jumpToSlide(index);
+    }
+
     function moveCarousel(dir) {
-      currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
-      goToSlide(currentSlide);
+      if (isSliding) return;
+      isSliding = true;
+      const total = getOrigSlides().length;
+      currentSlide += dir;
+
+      carouselTrack.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
+      carouselTrack.style.transform  = `translateX(-${getSlideOffset(currentSlide)}px)`;
+      updateCarouselDots();
+
+      carouselTrack.addEventListener('transitionend', function handler() {
+        carouselTrack.removeEventListener('transitionend', handler);
+        isSliding = false;
+        if (currentSlide >= total) {
+          currentSlide = 0;
+          carouselTrack.style.transition = 'none';
+          carouselTrack.style.transform  = `translateX(-${getSlideOffset(0)}px)`;
+          updateCarouselDots();
+        } else if (currentSlide < 0) {
+          currentSlide = total - 1;
+          carouselTrack.style.transition = 'none';
+          carouselTrack.style.transform  = `translateX(-${getSlideOffset(total - 1)}px)`;
+          updateCarouselDots();
+        }
+      }, { once: true });
+
       resetAutoplay();
     }
 
@@ -1269,16 +1596,170 @@
       autoplayTimer = setInterval(() => moveCarousel(1), 4000);
     }
 
+    function initCarousel() {
+      currentSlide = 0;
+      buildImageInfiniteTrack();
+      buildCarouselDots();
+      carouselTrack.style.transition = 'none';
+      carouselTrack.style.transform  = `translateX(-${getSlideOffset(0)}px)`;
+    }
+
+    window.addEventListener('resize', () => {
+      carouselTrack.style.transition = 'none';
+      carouselTrack.style.transform  = `translateX(-${getSlideOffset(currentSlide)}px)`;
+    });
+
+    initCarousel();
     resetAutoplay();
 
-    // Swipe support for carousel
-    const track = document.getElementById('carouselTrack');
+    // Swipe support for image carousel
     let touchStartX = 0;
-    track.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX, { passive: true });
-    track.addEventListener('touchend', e => {
+    carouselTrack.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX, { passive: true });
+    carouselTrack.addEventListener('touchend', e => {
       const diff = touchStartX - e.changedTouches[0].clientX;
       if (Math.abs(diff) > 40) moveCarousel(diff > 0 ? 1 : -1);
     });
+    // ── Reviews Carousel — infinite circular loop ──
+    const reviewsTrack = document.getElementById('reviewsTrack');
+    const reviewsDots  = document.getElementById('reviewsDots');
+    const GAP = 24;
+    let reviewPage = 0;
+    let isAnimating = false;
+
+    function getReviewVisible() {
+      return window.innerWidth <= 600 ? 1 : 3;
+    }
+
+    function getAllCards() {
+      return Array.from(reviewsTrack.querySelectorAll('.review-card'));
+    }
+
+    function getOrigCards() {
+      return Array.from(reviewsTrack.querySelectorAll('.review-card:not([data-clone])'));
+    }
+
+    function buildInfiniteTrack() {
+      // Remove old clones
+      reviewsTrack.querySelectorAll('[data-clone]').forEach(c => c.remove());
+      const orig    = getOrigCards();
+      const visible = getReviewVisible();
+      // Clone last `visible` to prepend, first `visible` to append
+      orig.slice(-visible).reverse().forEach(c => {
+        const cl = c.cloneNode(true); cl.dataset.clone = '1';
+        reviewsTrack.prepend(cl);
+      });
+      orig.slice(0, visible).forEach(c => {
+        const cl = c.cloneNode(true); cl.dataset.clone = '1';
+        reviewsTrack.appendChild(cl);
+      });
+    }
+
+    function setReviewCardWidths() {
+      const visible   = getReviewVisible();
+      const container = document.querySelector('.reviews-carousel-wrap').offsetWidth;
+      const cardW     = (container - GAP * (visible - 1)) / visible;
+      getAllCards().forEach(c => { c.style.width = cardW + 'px'; });
+    }
+
+    function getOffset(page) {
+      const visible = getReviewVisible();
+      const cardW   = getAllCards()[0].offsetWidth;
+      return (visible + page * visible) * (cardW + GAP);
+    }
+
+    function totalReviewPages() {
+      return Math.ceil(getOrigCards().length / getReviewVisible());
+    }
+
+    function buildReviewDots() {
+      reviewsDots.innerHTML = '';
+      for (let i = 0; i < totalReviewPages(); i++) {
+        const dot = document.createElement('button');
+        dot.className = 'reviews-nav-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => {
+          reviewPage = i;
+          reviewsTrack.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
+          reviewsTrack.style.transform  = `translateX(-${getOffset(i)}px)`;
+          updateReviewDots();
+        });
+        reviewsDots.appendChild(dot);
+      }
+    }
+
+    function updateReviewDots() {
+      reviewsDots.querySelectorAll('.reviews-nav-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === reviewPage);
+      });
+    }
+
+    function moveReviews(dir) {
+      if (isAnimating) return;
+      isAnimating = true;
+      reviewPage += dir;
+      reviewsTrack.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
+      reviewsTrack.style.transform  = `translateX(-${getOffset(reviewPage)}px)`;
+      updateReviewDots();
+
+      reviewsTrack.addEventListener('transitionend', function handler() {
+        reviewsTrack.removeEventListener('transitionend', handler);
+        isAnimating = false;
+        const pages = totalReviewPages();
+        if (reviewPage >= pages) {
+          reviewPage = 0;
+          reviewsTrack.style.transition = 'none';
+          reviewsTrack.style.transform  = `translateX(-${getOffset(0)}px)`;
+          updateReviewDots();
+        } else if (reviewPage < 0) {
+          reviewPage = pages - 1;
+          reviewsTrack.style.transition = 'none';
+          reviewsTrack.style.transform  = `translateX(-${getOffset(reviewPage)}px)`;
+          updateReviewDots();
+        }
+      }, { once: true });
+    }
+
+    function initReviews() {
+      reviewPage = 0;
+      buildInfiniteTrack();
+      setReviewCardWidths();
+      buildReviewDots();
+      reviewsTrack.style.transition = 'none';
+      reviewsTrack.style.transform  = `translateX(-${getOffset(0)}px)`;
+    }
+
+    window.addEventListener('resize', initReviews);
+    initReviews();
+
+    // Swipe for reviews
+    let rTouchStart = 0;
+    reviewsTrack.addEventListener('touchstart', e => rTouchStart = e.touches[0].clientX, { passive: true });
+    reviewsTrack.addEventListener('touchend', e => {
+      const diff = rTouchStart - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) moveReviews(diff > 0 ? 1 : -1);
+    });
+
+    // ── Review Modal ──
+    function openReview(name, date, initial, text) {
+      document.getElementById('modalName').textContent   = name;
+      document.getElementById('modalDate').textContent   = date;
+      document.getElementById('modalAvatar').textContent = initial;
+      document.getElementById('modalText').textContent   = text;
+      document.getElementById('reviewModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeReview(e) {
+      if (e && e.type === 'click') {
+        const modal = document.getElementById('reviewModal');
+        // Only close if clicking the backdrop or the ✕ button
+        if (e.target !== modal && !e.target.closest('button[onclick^="closeReview"]')) return;
+      }
+      document.getElementById('reviewModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReview({}); });
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
