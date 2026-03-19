@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Early Spoon – Fresh Homemade Meals</title>
-  <link rel="icon" href="logo_nav.png" type="image/png" />
+  <link rel="icon" href="favicon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet" />
@@ -113,7 +113,7 @@
         url('https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=1600&q=80') center/cover no-repeat;
       display: flex;
       align-items: center;
-      padding: 120px 5% 80px;
+      padding: 110px 5% 80px;
       position: relative;
       overflow: hidden;
     }
@@ -126,10 +126,20 @@
       background: linear-gradient(to top, var(--cream), transparent);
     }
 
-    .hero-content {
-      max-width: 620px;
+    /* ── HERO LAYOUT ── */
+    .hero-layout {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+      width: 100%;
       position: relative;
       z-index: 2;
+    }
+
+    .hero-content {
+      max-width: 620px;
       animation: fadeUp 0.9s ease both;
     }
 
@@ -247,13 +257,16 @@
     }
 
     .hygiene-badge {
-      position: absolute;
-      bottom: 160px; right: 5%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      flex-shrink: 0;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 8px 32px rgba(0,0,0,0.25);
       z-index: 2;
       animation: fadeUp 1.1s 0.3s ease both;
+      align-self: flex-start;
     }
 
     .hygiene-badge .label {
@@ -971,7 +984,14 @@
       .hamburger { display: flex; }
 
       .hero-content { max-width: 100%; }
-      .hygiene-badge { display: none; }
+      .hero-layout {
+        flex-direction: column-reverse;
+        gap: 20px;
+      }
+      .hygiene-badge {
+        align-self: flex-end;
+      }
+      .hygiene-badge img { height: 60px; }
       .catering-grid { grid-template-columns: 1fr; gap: 40px; }
       .catering-img { height: 280px; }
       .offers-grid { grid-template-columns: 1fr; }
@@ -985,7 +1005,7 @@
   <!-- NAV -->
   <nav id="navbar">
     <a href="#home" class="nav-logo">
-      <img src="logo_nav.png" alt="Early Spoon Logo" style="height:44px;width:44px;object-fit:contain;" />
+      <img src="logo.png" alt="Early Spoon Logo" style="height:44px;width:44px;object-fit:contain;" />
       <span class="nav-logo-text">Early Spoon</span>
     </a>
     <ul class="nav-links" id="navLinks">
@@ -1002,32 +1022,34 @@
 
   <!-- HERO -->
   <section id="home">
-    <div class="hero-content">
-      <p class="hero-eyebrow">Homemade · Fresh · With Love</p>
-      <h1 class="hero-title">
-        Fresh Homemade Meals<br/><em>Made with Care</em>
-      </h1>
-      <p class="hero-sub">
-        Serving breakfast, lunch, and evening snacks made fresh from our home kitchen —
-        quality ingredients and lots of love.
-      </p>
-      <ul class="hero-checks">
-        <li>Fresh Daily Menu</li>
-        <li>Homemade Taste</li>
-        <li>Party &amp; Catering Orders Available</li>
-      </ul>
-      <div class="hero-buttons">
-        <a href="https://wa.me/c/447440035369" target="_blank" class="btn-primary">
-          🍽️ View Today's Menu
-        </a>
-        <a href="#catering" class="btn-outline">
-          Plan Catering
-        </a>
+    <div class="hero-layout">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Homemade · Fresh · With Love</p>
+        <h1 class="hero-title">
+          Fresh Homemade Meals<br/><em>Made with Care</em>
+        </h1>
+        <p class="hero-sub">
+          Serving breakfast, lunch, and evening snacks made fresh from our home kitchen —
+          quality ingredients and lots of love.
+        </p>
+        <ul class="hero-checks">
+          <li>Fresh Daily Menu</li>
+          <li>Homemade Taste</li>
+          <li>Party &amp; Catering Orders Available</li>
+        </ul>
+        <div class="hero-buttons">
+          <a href="https://wa.me/c/447440035369" target="_blank" class="btn-primary">
+            🍽️ View Today's Menu
+          </a>
+          <a href="#catering" class="btn-outline">
+            Plan Catering
+          </a>
+        </div>
       </div>
-    </div>
 
-    <div class="hygiene-badge">
-      <img src="hygiene-rating.png" alt="Food Hygiene Rating 5 – Very Good" style="height:80px;width:auto;display:block;" />
+      <div class="hygiene-badge">
+        <img src="hygiene-rating.png" alt="Food Hygiene Rating 5 – Very Good" style="height:80px;width:auto;display:block;" />
+      </div>
     </div>
 
     <div class="scroll-hint">Scroll</div>
