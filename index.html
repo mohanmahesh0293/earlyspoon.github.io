@@ -967,6 +967,240 @@
       transform: translateY(0);
     }
 
+    /* ── BATTERS SECTION ── */
+    #batters {
+      background: var(--cream);
+      padding: 90px 5%;
+    }
+
+    .batters-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 48px;
+    }
+
+    .batters-header .divider { margin: 18px auto 28px; }
+
+    .new-arrival-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(90deg, var(--rust), var(--gold));
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+    }
+
+    /* Tabs */
+    .batters-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin: 0 auto 44px;
+      background: var(--white);
+      border: 1.5px solid rgba(212,137,42,0.2);
+      border-radius: 50px;
+      padding: 5px;
+      width: fit-content;
+      box-shadow: 0 4px 20px rgba(123,45,0,0.07);
+    }
+
+    .batter-tab {
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 12px 32px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      background: transparent;
+      color: var(--muted);
+      transition: background 0.25s, color 0.25s, box-shadow 0.25s;
+    }
+
+    .batter-tab.active {
+      background: var(--rust);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(192,74,26,0.35);
+    }
+
+    .batter-tab:hover:not(.active) {
+      background: rgba(192,74,26,0.08);
+      color: var(--rust);
+    }
+
+    /* Tab panels */
+    .batter-panel { display: none; }
+    .batter-panel.active { display: block; }
+
+    /* Product grid */
+    .batter-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .batter-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 28px rgba(123,45,0,0.09);
+      border: 1.5px solid rgba(212,137,42,0.13);
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .batter-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(123,45,0,0.16);
+    }
+
+    .batter-img-wrap {
+      width: 100%;
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .batter-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .batter-coming-soon-wrap {
+      width: 100%;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      position: relative;
+    }
+
+    .batter-coming-soon-wrap .cs-emoji {
+      font-size: 3rem;
+      line-height: 1;
+    }
+
+    .batter-coming-soon-badge {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(44,16,0,0.62);
+      backdrop-filter: blur(6px);
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 50px;
+    }
+
+    /* Classic Dosa has a real photo */
+    .batter-img-real {
+      background: #e8ddd0;
+    }
+
+    /* Ragi placeholder – warm tan */
+    .batter-cs-ragi { background: linear-gradient(135deg, #d4b896 0%, #c8a87a 100%); }
+    /* Millet placeholder – soft sage */
+    .batter-cs-millet { background: linear-gradient(135deg, #c8d9b8 0%, #a8c890 100%); }
+    /* Idly Classic placeholder – warm cream */
+    .batter-cs-idly-classic { background: linear-gradient(135deg, #f0e8d0 0%, #e4d4a8 100%); }
+    /* Ragi Idly – tan */
+    .batter-cs-ragi-idly { background: linear-gradient(135deg, #d4b896 0%, #c8a87a 100%); }
+    /* Millet Idly – sage */
+    .batter-cs-millet-idly { background: linear-gradient(135deg, #c8d9b8 0%, #a8c890 100%); }
+
+    .batter-body {
+      padding: 22px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .batter-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .batter-ingredients-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 5px;
+    }
+
+    .batter-ingredients {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .batter-note {
+      font-size: 0.8rem;
+      color: var(--rust);
+      font-style: italic;
+      border-left: 3px solid var(--gold);
+      padding-left: 10px;
+      margin-top: 12px;
+      background: rgba(212,137,42,0.06);
+      border-radius: 0 6px 6px 0;
+      padding: 6px 10px;
+    }
+
+    .batter-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid rgba(212,137,42,0.14);
+    }
+
+    .batter-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--rust);
+    }
+
+    .batter-weight {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--muted);
+      background: rgba(123,45,0,0.07);
+      padding: 5px 14px;
+      border-radius: 50px;
+    }
+
+    @media (max-width: 768px) {
+      .batter-grid { grid-template-columns: 1fr; }
+      .batters-tabs { flex-direction: column; border-radius: 16px; width: 90%; }
+      .batter-tab { border-radius: 12px; }
+    }
+
     /* ── MOBILE ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -1010,6 +1244,7 @@
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
+      <li><a href="#batters">Batters</a></li>
       <li><a href="#menu">Menu</a></li>
       <li><a href="#catering">Catering</a></li>
 	  <li><a href="https://maps.app.goo.gl/aUL9PqspCFWVWqQT7" target="_blank">Locate Us</a></li>	  
@@ -1111,6 +1346,171 @@
         <a href="https://wa.me/c/447440035369" target="_blank" class="btn-primary" style="display:inline-flex;margin-top:8px;">
           🥄 View Today's Menu
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BATTERS SECTION -->
+  <section id="batters">
+    <div class="batters-header fade-in">
+      <div class="new-arrival-badge">🌿 New Arrival · Freshly Made</div>
+      <span class="section-label">Fresh From Our Kitchen</span>
+      <h2 class="section-title">Homemade Batters <em style="font-style:italic;color:var(--gold);">Are Here</em></h2>
+      <div class="divider"></div>
+      <p class="section-body">
+        Authentic Indian batters, stone-ground and crafted with care — delivered fresh to your door across the UK.
+      </p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="batters-tabs fade-in" role="tablist">
+      <button class="batter-tab active" role="tab" aria-selected="true"
+              aria-controls="panel-idly" id="tab-idly"
+              onclick="switchBatterTab('idly')">🍚 Idly Batters</button>
+      <button class="batter-tab" role="tab" aria-selected="false"
+              aria-controls="panel-dosa" id="tab-dosa"
+              onclick="switchBatterTab('dosa')">🥞 Dosa Batters</button>
+    </div>
+
+    <!-- Idly Batters Panel -->
+    <div class="batter-panel active" id="panel-idly" role="tabpanel" aria-labelledby="tab-idly">
+      <div class="batter-grid">
+
+        <!-- Classic Idly Batter -->
+        <div class="batter-card fade-in">
+          <div class="batter-img-wrap">
+            <img
+              src="classic_idly_batter.jpg"
+			  onerror="https://upload.wikimedia.org/wikipedia/commons/8/86/Idli_-_A_Traditional_Indian_Food.JPG"
+              alt="Classic Idly – soft steamed South Indian rice cakes"
+              style="object-position:center;"
+            />
+          </div>
+          <div class="batter-body">
+            <div class="batter-name">Classic Idly Batter</div>
+            <div class="batter-ingredients-label">Ingredients</div>
+            <div class="batter-ingredients">Urad Dal, Idly Rava, Fenugreek Seeds</div>
+            <div class="batter-footer">
+              <span class="batter-price">£3.79</span>
+              <span class="batter-weight">1 kg</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ragi Idly Batter -->
+        <div class="batter-card fade-in">
+          <div class="batter-img-wrap">
+            <img
+              src="ragi_idly_batter.jpg"
+			  onerror="https://upload.wikimedia.org/wikipedia/commons/c/c4/Ragi_idli.JPG"
+              alt="Ragi Idly – finger millet steamed cakes"
+              style="object-position:center;"
+            />
+          </div>
+          <div class="batter-body">
+            <div class="batter-name">Ragi Idly Batter</div>
+            <div class="batter-ingredients-label">Ingredients</div>
+            <div class="batter-ingredients">Finger Millets, Urad Dal, Little Idly Rava, Fenugreek Seeds</div>
+            <div class="batter-footer">
+              <span class="batter-price">£4.39</span>
+              <span class="batter-weight">1 kg</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Millet Idly Batter -->
+        <div class="batter-card fade-in">
+          <div class="batter-img-wrap">
+            <img
+              src="millet_idly_batter.jpg"
+			  onerror="https://upload.wikimedia.org/wikipedia/commons/5/52/Idli_sambar.JPG"
+              alt="Millet Idly – mixed millet steamed cakes"
+              style="object-position:center;"
+            />
+          </div>
+          <div class="batter-body">
+            <div class="batter-name">Millet Idly Batter</div>
+            <div class="batter-ingredients-label">Ingredients</div>
+            <div class="batter-ingredients">Pearl Millet, Foxtail Millet, Little Millet, Kodo Millet, Urad Dal, Idly Rava, Fenugreek Seeds</div>
+            <div class="batter-note">* Prepared with a single select millet per batch</div>
+            <div class="batter-footer">
+              <span class="batter-price">£4.79</span>
+              <span class="batter-weight">1 kg</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Dosa Batters Panel -->
+    <div class="batter-panel" id="panel-dosa" role="tabpanel" aria-labelledby="tab-dosa">
+      <div class="batter-grid">
+
+        <!-- Classic Dosa Batter -->
+        <div class="batter-card fade-in">
+          <div class="batter-img-wrap batter-img-real">
+            <img
+              src="classic_dosa_batter.jpg"
+			  onerror="https://upload.wikimedia.org/wikipedia/commons/6/64/Dosa_with_Chutney_and_Sambhar.jpg"
+              alt="Classic Dosa – crispy South Indian rice crepe with chutney and sambar"
+              style="object-position:center;"
+            />
+          </div>
+          <div class="batter-body">
+            <div class="batter-name">Classic Dosa Batter</div>
+            <div class="batter-ingredients-label">Ingredients</div>
+            <div class="batter-ingredients">Urad Dal, Rice, Fenugreek Seeds</div>
+            <div class="batter-footer">
+              <span class="batter-price">£3.49</span>
+              <span class="batter-weight">1 kg</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ragi Dosa Batter -->
+        <div class="batter-card fade-in">
+          <div class="batter-img-wrap">
+            <img
+              src="ragi_dosa_batter.jpg"
+			  onerror="https://upload.wikimedia.org/wikipedia/commons/b/bc/Ragi_dosa.JPG"
+              alt="Ragi Dosa – finger millet crepe"
+              style="object-position:center;"
+            />
+          </div>
+          <div class="batter-body">
+            <div class="batter-name">Ragi Dosa Batter</div>
+            <div class="batter-ingredients-label">Ingredients</div>
+            <div class="batter-ingredients">Finger Millets, Urad Dal, Little Rice, Fenugreek Seeds</div>
+            <div class="batter-footer">
+              <span class="batter-price">£4.39</span>
+              <span class="batter-weight">1 kg</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Millet Dosa Batter -->
+        <div class="batter-card fade-in">
+          <div class="batter-img-wrap">
+            <img
+              src="millet_dosa_batter.jpg"
+			  onerror="https://upload.wikimedia.org/wikipedia/commons/4/4a/Masala_Dosa_(Bengaluru).JPG"
+              alt="Millet Dosa – South Indian crispy dosa"
+              style="object-position:center;"
+            />
+          </div>
+          <div class="batter-body">
+            <div class="batter-name">Millet Dosa Batter</div>
+            <div class="batter-ingredients-label">Ingredients</div>
+            <div class="batter-ingredients">Pearl Millet, Foxtail Millet, Little Millet, Kodo Millet</div>
+            <div class="batter-note">* Prepared with a single select millet per batch</div>
+            <div class="batter-footer">
+              <span class="batter-price">£4.79</span>
+              <span class="batter-weight">1 kg</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1795,6 +2195,25 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    // ── Batters Tab Switcher ──
+    function switchBatterTab(tab) {
+      document.querySelectorAll('.batter-tab').forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.batter-panel').forEach(panel => panel.classList.remove('active'));
+
+      document.getElementById('tab-' + tab).classList.add('active');
+      document.getElementById('tab-' + tab).setAttribute('aria-selected', 'true');
+      document.getElementById('panel-' + tab).classList.add('active');
+
+      // Re-trigger fade-in for newly visible cards
+      document.querySelectorAll('#panel-' + tab + ' .fade-in').forEach((el, i) => {
+        el.classList.remove('visible');
+        setTimeout(() => el.classList.add('visible'), i * 100);
+      });
+    }
+
   </script>
 </body>
 </html>
