@@ -971,6 +971,8 @@
     #batters {
       background: var(--cream);
       padding: 90px 5%;
+      content-visibility: auto;
+      contain-intrinsic-size: 0 800px;
     }
 
     .batters-header {
@@ -1195,6 +1197,66 @@
       border-radius: 50px;
     }
 
+    .btn-batter-wa {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: #25D366;
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.84rem;
+      letter-spacing: 0.6px;
+      padding: 11px 18px;
+      border-radius: 50px;
+      text-decoration: none;
+      margin-top: 14px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 3px 14px rgba(37,211,102,0.30);
+    }
+
+    .btn-batter-wa:hover {
+      background: #1da354;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(37,211,102,0.40);
+    }
+
+    .batter-panel-cta {
+      text-align: center;
+      margin-top: 36px;
+    }
+
+    .btn-batter-panel-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.92rem;
+      letter-spacing: 0.8px;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+    }
+
+    .btn-batter-panel-wa:hover {
+      background: #1da354;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(37,211,102,0.45);
+    }
+
+    .batter-panel-cta-note {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
     @media (max-width: 768px) {
       .batter-grid { grid-template-columns: 1fr; }
       .batters-tabs { flex-direction: column; border-radius: 16px; width: 90%; }
@@ -1320,6 +1382,8 @@
         <img
           src="about-photo.jpeg"
           alt="Early Spoon homemade food"
+          loading="eager"
+          decoding="async"
           onerror="this.src='https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=800&q=80'"
         />
         <div class="about-tag">🏠 Made Fresh · Early Spoon Kitchen</div>
@@ -1380,8 +1444,8 @@
         <div class="batter-card fade-in">
           <div class="batter-img-wrap">
             <img
-              src="classic_idly_batter.jpg"
-			  onerror="https://upload.wikimedia.org/wikipedia/commons/8/86/Idli_-_A_Traditional_Indian_Food.JPG"
+              src="https://upload.wikimedia.org/wikipedia/commons/8/86/Idli_-_A_Traditional_Indian_Food.JPG"
+              loading="lazy" decoding="async"
               alt="Classic Idly – soft steamed South Indian rice cakes"
               style="object-position:center;"
             />
@@ -1394,6 +1458,9 @@
               <span class="batter-price">£3.79</span>
               <span class="batter-weight">1 kg</span>
             </div>
+            <a href="https://wa.me/c/447440035369" target="_blank" class="btn-batter-wa">
+              🛒 Order on WhatsApp
+            </a>
           </div>
         </div>
 
@@ -1401,8 +1468,8 @@
         <div class="batter-card fade-in">
           <div class="batter-img-wrap">
             <img
-              src="ragi_idly_batter.jpg"
-			  onerror="https://upload.wikimedia.org/wikipedia/commons/c/c4/Ragi_idli.JPG"
+              src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Ragi_idli.JPG"
+              loading="lazy" decoding="async"
               alt="Ragi Idly – finger millet steamed cakes"
               style="object-position:center;"
             />
@@ -1415,6 +1482,9 @@
               <span class="batter-price">£4.39</span>
               <span class="batter-weight">1 kg</span>
             </div>
+            <a href="https://wa.me/c/447440035369" target="_blank" class="btn-batter-wa">
+              🛒 Order on WhatsApp
+            </a>
           </div>
         </div>
 
@@ -1422,8 +1492,8 @@
         <div class="batter-card fade-in">
           <div class="batter-img-wrap">
             <img
-              src="millet_idly_batter.jpg"
-			  onerror="https://upload.wikimedia.org/wikipedia/commons/5/52/Idli_sambar.JPG"
+              src="https://upload.wikimedia.org/wikipedia/commons/5/52/Idli_sambar.JPG"
+              loading="lazy" decoding="async"
               alt="Millet Idly – mixed millet steamed cakes"
               style="object-position:center;"
             />
@@ -1437,6 +1507,9 @@
               <span class="batter-price">£4.79</span>
               <span class="batter-weight">1 kg</span>
             </div>
+            <a href="https://wa.me/c/447440035369" target="_blank" class="btn-batter-wa">
+              🛒 Order on WhatsApp
+            </a>
           </div>
         </div>
 
@@ -1451,8 +1524,8 @@
         <div class="batter-card fade-in">
           <div class="batter-img-wrap batter-img-real">
             <img
-              src="classic_dosa_batter.jpg"
-			  onerror="https://upload.wikimedia.org/wikipedia/commons/6/64/Dosa_with_Chutney_and_Sambhar.jpg"
+              src="https://upload.wikimedia.org/wikipedia/commons/6/64/Dosa_with_Chutney_and_Sambhar.jpg"
+              loading="lazy" decoding="async"
               alt="Classic Dosa – crispy South Indian rice crepe with chutney and sambar"
               style="object-position:center;"
             />
@@ -1462,9 +1535,12 @@
             <div class="batter-ingredients-label">Ingredients</div>
             <div class="batter-ingredients">Urad Dal, Rice, Fenugreek Seeds</div>
             <div class="batter-footer">
-              <span class="batter-price">£3.79</span>
+              <span class="batter-price">£3.49</span>
               <span class="batter-weight">1 kg</span>
             </div>
+            <a href="https://wa.me/c/447440035369" target="_blank" class="btn-batter-wa">
+              🛒 Order on WhatsApp
+            </a>
           </div>
         </div>
 
@@ -1472,8 +1548,8 @@
         <div class="batter-card fade-in">
           <div class="batter-img-wrap">
             <img
-              src="ragi_dosa_batter.jpg"
-			  onerror="https://upload.wikimedia.org/wikipedia/commons/b/bc/Ragi_dosa.JPG"
+              src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Ragi_dosa.JPG"
+              loading="lazy" decoding="async"
               alt="Ragi Dosa – finger millet crepe"
               style="object-position:center;"
             />
@@ -1486,6 +1562,9 @@
               <span class="batter-price">£4.39</span>
               <span class="batter-weight">1 kg</span>
             </div>
+            <a href="https://wa.me/c/447440035369" target="_blank" class="btn-batter-wa">
+              🛒 Order on WhatsApp
+            </a>
           </div>
         </div>
 
@@ -1493,8 +1572,8 @@
         <div class="batter-card fade-in">
           <div class="batter-img-wrap">
             <img
-              src="millet_dosa_batter.jpg"
-			  onerror="https://upload.wikimedia.org/wikipedia/commons/4/4a/Masala_Dosa_(Bengaluru).JPG"
+              src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Masala_Dosa_(Bengaluru).JPG"
+              loading="lazy" decoding="async"
               alt="Millet Dosa – South Indian crispy dosa"
               style="object-position:center;"
             />
@@ -1508,6 +1587,9 @@
               <span class="batter-price">£4.79</span>
               <span class="batter-weight">1 kg</span>
             </div>
+            <a href="https://wa.me/c/447440035369" target="_blank" class="btn-batter-wa">
+              🛒 Order on WhatsApp
+            </a>
           </div>
         </div>
 
@@ -1530,21 +1612,25 @@
         <div class="carousel-track" id="carouselTrack">
           <div class="carousel-slide">
             <img src="food-photo-1.jpeg" alt="Early Spoon – Crispy bites with chutney and salad"
+              loading="eager" fetchpriority="high" decoding="async"
               onerror="this.src='https://images.unsplash.com/photo-1574484284002-952d92456975?w=900&q=80'" />
             <div class="carousel-caption">Golden Crispy Bites · with Chutney &amp; Salad</div>
           </div>
           <div class="carousel-slide">
             <img src="food-photo-2.jpeg" alt="Early Spoon – Spiced chicken bowls with avocado"
+              loading="lazy" decoding="async"
               onerror="this.src='https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=900&q=80'" />
             <div class="carousel-caption">Spiced Chicken Bowls · with Avocado &amp; Green Sauce</div>
           </div>
           <div class="carousel-slide">
             <img src="food-photo-3.jpeg" alt="Early Spoon – Fresh salad bowl with jalapeños"
+              loading="lazy" decoding="async"
               onerror="this.src='https://images.unsplash.com/photo-1540420773420-3366772f4999?w=900&q=80'" />
             <div class="carousel-caption">Fresh Salad Bowl · with Jalapeños &amp; Herb Dressing</div>
           </div>
           <div class="carousel-slide">
             <img src="food-photo.jpeg" alt="Early Spoon – Signature rice bowl"
+              loading="lazy" decoding="async"
               onerror="this.src='https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=900&q=80'" />
             <div class="carousel-caption">Signature Rice Bowl · Spiced Chicken &amp; Black Beans</div>
           </div>
@@ -1642,6 +1728,8 @@
         <img
           src="https://images.unsplash.com/photo-1555244162-803834f70033?w=800&q=80"
           alt="Catering spread for events"
+          loading="lazy"
+          decoding="async"
         />
       </div>
     </div>
@@ -1800,7 +1888,7 @@
       <p style="font-size:0.9rem;color:var(--muted);max-width:400px;line-height:1.6;">
         Share your experience and help others discover the taste of homemade food made with love.
       </p>
-      <a href="#" class="btn-primary" style="margin-top:8px;">⭐ Leave a Google Review</a>
+      <a href="https://maps.app.goo.gl/1jQBw6CyqzvFL7RQ8" class="btn-primary" target="_blank" style="margin-top:8px;">⭐ Leave a Google Review</a>
     </div>
   </section>
 
